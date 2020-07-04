@@ -17,6 +17,7 @@ urlpatterns = [
     path("users/", include("restaurant_management_django.users.urls", namespace="users")),
     path("accounts/", include("allauth.urls")),
     # Your stuff: custom urls includes go here
+path("nutritionals/", include("restaurant_management_django.nutritionals.urls", namespace="nutritionals"))
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 if settings.DEBUG:
     # Static file serving when using Gunicorn + Uvicorn for local web socket development

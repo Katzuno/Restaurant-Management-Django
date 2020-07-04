@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+
+{% block title %}{{ nutritional.name }}{% endblock %}
+
+{% block content %}
+
+<h1>Nutritional Values</h1>
+
+<table class = "table">
+<thead>
+    <tr>
+    <th>Name</th>
+    <th>View</th>
+    <th>Edit</th>
+    <th>Delete</th>
+    </tr>
+</thead>
+<tbody>
+    {% for nutritional_value in object_list %}
+    <tr>
+    <td>{{ nutritional_value.name }}</td>
+    <td><a href="{% url "nutritionals:detail" nutritional_value.id %}">View Details</a></td>
+    <td><a href="{% url "nutritionals:update" nutritional_value.id %}">Edit</a></td>
+    <td><a href="{% url "nutritionals:delete" nutritional_value.id %}">Delete</a></td>
+    </tr>
+    {% endfor %}
+</tbody>
+</table>
+
+
+<a href="{% url 'nutritionals:create' %}">Add new nutritional value</a>
+
+{% endblock %}

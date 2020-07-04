@@ -1,14 +1,20 @@
 from django.urls import path
 
-from restaurant_management_django.users.views import (
-    user_detail_view,
-    user_redirect_view,
-    user_update_view,
+from restaurant_management_django.nutritionals.views import (
+    nutritional_information_create_view,
+    nutritional_information_list_view,
+    nutritional_information_detail_view,
+    nutritional_information_update_view,
+    nutritional_information_delete_view
 )
 
-app_name = "users"
+app_name = "nutritionals"
+
 urlpatterns = [
-    path("~redirect/", view=user_redirect_view, name="redirect"),
-    path("~update/", view=user_update_view, name="update"),
-    path("<str:username>/", view=user_detail_view, name="detail"),
+    path("list/", view=nutritional_information_list_view, name="list"),
+
+    path("create/", view=nutritional_information_create_view, name="create"),
+    path("update/<int:pk>", view=nutritional_information_update_view, name="update"),
+    path("delete/<int:pk>", view=nutritional_information_delete_view, name="delete"),
+    path("details/<int:pk>", view=nutritional_information_detail_view, name="detail"),
 ]

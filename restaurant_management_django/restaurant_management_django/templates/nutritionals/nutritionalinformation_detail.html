@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Nutritional Value: {{ object.name }}{% endblock %}
+
+{% block content %}
+<div class="container">
+
+  <div class="row">
+    <div class="col-sm-12">
+
+      <h2>Nutritional Value: {{ object.name }}</h2>
+      {% if object.unit %}
+      <p>Unit: {{ object.unit }}</p>
+      {% endif %}
+    </div>
+  </div>
+
+  <!-- Action buttons -->
+  <div class="row">
+
+    <div class="col-sm-12">
+      <a class="btn btn-primary" href="{% url "nutritionals:update" object.id %}" role="button">Edit details</a>
+    </div>
+
+  </div>
+  <!-- End Action buttons -->
+
+
+</div>
+{% endblock content %}
+
