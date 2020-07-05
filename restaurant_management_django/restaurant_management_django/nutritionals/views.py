@@ -10,7 +10,7 @@ from restaurant_management_django.nutritionals.models import NutritionalInformat
 # Create your views here.
 
 
-class NutritionalInformationCreateView(CreateView):
+class NutritionalInformationCreateView(LoginRequiredMixin, CreateView):
     model = NutritionalInformation
     fields = ['name', 'unit']
     success_url = reverse_lazy('nutritionals:list')
@@ -19,7 +19,7 @@ class NutritionalInformationCreateView(CreateView):
 nutritional_information_create_view = NutritionalInformationCreateView.as_view()
 
 
-class NutritionalInformationListView(ListView):
+class NutritionalInformationListView(LoginRequiredMixin, ListView):
     model = NutritionalInformation
 
 
@@ -48,7 +48,7 @@ class NutritionalInformationUpdateView(LoginRequiredMixin, UpdateView):
 nutritional_information_update_view = NutritionalInformationUpdateView.as_view()
 
 
-class NutritionalInformationDeleteView(DeleteView):
+class NutritionalInformationDeleteView(LoginRequiredMixin, DeleteView):
     model = NutritionalInformation
     success_url = reverse_lazy('nutritionals:list')
 

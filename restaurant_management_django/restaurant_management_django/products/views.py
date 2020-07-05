@@ -12,7 +12,7 @@ from restaurant_management_django.products.models import Product
 from restaurant_management_django.products.forms import ProductFilter
 
 
-class ProductCreateView(CreateView):
+class ProductCreateView(LoginRequiredMixin, CreateView):
     model = Product
     fields = ['name', 'description', 'nutritional_values', 'status']
     success_url = reverse_lazy('products:list')
@@ -21,7 +21,7 @@ class ProductCreateView(CreateView):
 product_create_view = ProductCreateView.as_view()
 
 
-class ProductListView(FilterView):
+class ProductListView(LoginRequiredMixin, FilterView):
     model = Product
     template_name = 'products/product_list.html'
     filterset_class = ProductFilter
@@ -51,7 +51,7 @@ class ProductUpdateView(LoginRequiredMixin, UpdateView):
 product_update_view = ProductUpdateView.as_view()
 
 
-class ProductDeleteView(DeleteView):
+class ProductDeleteView(LoginRequiredMixin, DeleteView):
     model = Product
     success_url = reverse_lazy('products:list')
 
