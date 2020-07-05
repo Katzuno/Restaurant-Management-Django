@@ -61,6 +61,7 @@ DJANGO_APPS = [
     "django.contrib.staticfiles",
     # "django.contrib.humanize", # Handy template tags
     "django.contrib.admin",
+    "django.contrib.postgres",
     "django.forms",
 ]
 THIRD_PARTY_APPS = [
@@ -73,7 +74,8 @@ THIRD_PARTY_APPS = [
 LOCAL_APPS = [
     "restaurant_management_django.users.apps.UsersConfig",
     "restaurant_management_django.nutritionals.apps.NutritionalsConfig",
-    "restaurant_management_django.products.apps.ProductsConfig"
+    "restaurant_management_django.products.apps.ProductsConfig",
+    "django_filters"
     # Your stuff: custom apps go here
 ]
 # https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps

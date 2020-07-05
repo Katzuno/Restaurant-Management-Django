@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Product: {{ object.name }}{% endblock %}
+
+{% block content %}
+<div class="container">
+
+  <div class="row">
+    <div class="col-sm-12">
+
+      <h2><i>Product</i>: {{ object.name }}</h2>
+      {% if object.description %}
+      <p><b><i>Description</i></b>: {{ object.description }}</p>
+      {% endif %}
+
+      {% if object.nutritional_values %}
+      <p><b><i> Nutritional Values: </i></b><br/>
+        {% for nutritional_info, nutritional_value in object.nutritional_values.items %}
+        {{ nutritional_info }} : {{ nutritional_value }}
+        <br/>
+
+      {% endfor %}
+      </p>
+      {% endif %}
+
+      <p><b><i>Status</i></b>: {{ object.status }}</p>
+    </div>
+  </div>
+
+  <!-- Action buttons -->
+  <div class="row">
+
+    <div class="col-sm-12">
+      <a class="btn btn-primary" href="{% url "products:update" object.id %}" role="button">Edit details</a>
+    </div>
+
+  </div>
+  <!-- End Action buttons -->
+
+
+</div>
+{% endblock content %}
+

@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+
+{% block title %}{{ product.name }}{% endblock %}
+
+{% block content %}
+
+<h1>Products</h1>
+
+    <form action="" method="GET">
+        {{ filter.form|crispy }}
+        <input class = "btn btn-warning"  type="submit" value = "Filter"/>
+    </form>
+<br/>
+<table class = "table">
+<thead>
+    <tr>
+    <th>Name</th>
+    <th>Description</th>
+    <th>Nutritional Values</th>
+    <th>Status</th>
+    <th>View</th>
+    <th>Edit</th>
+    <th>Delete</th>
+    </tr>
+</thead>
+<tbody>
+    {% for product in object_list %}
+    <tr>
+    <td>{{ product.name }}</td>
+    <td>{{ product.description }}</td>
+    <td style="width: 25%;">
+    {% for nutritional_info, nutritional_value in product.nutritional_values.items %}
+        {{ nutritional_info }} : {{ nutritional_value }}
+      <br/>
+    {% endfor %}
+    </td>
+    <td>{{ product.status }}</td>
+    <td><a href="{% url "products:detail" product.id %}">View Details</a></td>
+    <td><a href="{% url "products:update" product.id %}">Edit</a></td>
+    <td><a href="{% url "products:delete" product.id %}">Delete</a></td>
+    </tr>
+    {% endfor %}
+</tbody>
+</table>
+
+
+<a class = "btn btn-primary" href="{% url 'products:create' %}">Add new product</a>
+
+{% endblock %}
