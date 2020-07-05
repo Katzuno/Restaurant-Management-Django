@@ -26,6 +26,7 @@ class ProductListView(LoginRequiredMixin, FilterView):
     template_name = 'products/product_list.html'
     filterset_class = ProductFilter
 
+
 product_list_view = ProductListView.as_view()
 
 
